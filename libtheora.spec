@@ -1,7 +1,7 @@
 Summary:	Theora - video codec intended for use within Ogg multimedia streaming system
 Name:		libtheora
 Version:	1.1.1
-Release:	4
+Release:	5
 License:	BSD-like
 Group:		Libraries
 Source0:	http://downloads.xiph.org/releases/theora/%{name}-%{version}.tar.bz2
@@ -56,6 +56,8 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT \
 	docdir=%{_docdir}/libtheora-docs
 
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -71,7 +73,6 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
 %{_includedir}/theora
 %{_pkgconfigdir}/*.pc
 
